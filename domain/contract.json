@@ -1,0 +1,28 @@
+{
+  "project": "节前采购承诺账本",
+  "entities": [
+    "supply_lot",
+    "demand",
+    "commitment",
+    "shipment"
+  ],
+  "states": [
+    "proposed",
+    "reserved",
+    "confirmed",
+    "fulfilled",
+    "degraded",
+    "cancelled"
+  ],
+  "event_types": [
+    "supply.registered",
+    "demand.submitted",
+    "commitment.reserved",
+    "commitment.confirmed",
+    "shipment.dispatched"
+  ],
+  "time_policy": "ISO 8601 with timezone",
+  "identifier_policy": "业务标识在同一类型内唯一",
+  "version_policy": "发布后的规则以新版本追加"
+}
+

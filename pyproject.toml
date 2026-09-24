@@ -1,0 +1,10 @@
+[project]
+name = "ccusr-commitment-ledger"
+version = "0.1.0"
+description = "采购承诺、供应批次与配货事件的领域资料"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"
+

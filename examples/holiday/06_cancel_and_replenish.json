@@ -1,0 +1,16 @@
+[
+  {
+    "event_id": "evt-d-05",
+    "event_type": "demand.cancelled",
+    "aggregate_id": "dmt-franchise-21",
+    "occurred_at": "2026-09-23T11:00:00+08:00",
+    "payload": {"reason": "加盟商临时撤单"}
+  },
+  {
+    "event_id": "evt-s-04",
+    "event_type": "supply.replenished",
+    "aggregate_id": "lot-pear-b",
+    "occurred_at": "2026-09-23T14:00:00+08:00",
+    "payload": {"delta": 20, "reason": "补货到场"}
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "event_id": "evt-d-01",
+    "event_type": "demand.submitted",
+    "aggregate_id": "dmt-direct-080",
+    "occurred_at": "2026-09-22T09:00:00+08:00",
+    "payload": {
+      "channel": "direct", "store_id": "store-080", "region": "north",
+      "sku": "pear", "quantity": 40
+    }
+  },
+  {
+    "event_id": "evt-d-02",
+    "event_type": "demand.submitted",
+    "aggregate_id": "dmt-group-500",
+    "occurred_at": "2026-09-22T09:10:00+08:00",
+    "payload": {
+      "channel": "group", "store_id": "group-500", "region": "south",
+      "sku": "pear", "quantity": 30, "contract_id": "ct-group-500"
+    }
+  },
+  {
+    "event_id": "evt-d-03",
+    "event_type": "demand.submitted",
+    "aggregate_id": "dmt-franchise-21",
+    "occurred_at": "2026-09-22T09:20:00+08:00",
+    "payload": {
+      "channel": "franchise", "store_id": "store-f21", "region": "south",
+      "sku": "pear", "quantity": 40
+    }
+  }
+]

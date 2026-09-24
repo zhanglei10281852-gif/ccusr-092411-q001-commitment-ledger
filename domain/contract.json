@@ -3,8 +3,11 @@
   "entities": [
     "supply_lot",
     "demand",
+    "contract",
+    "region_floor",
     "commitment",
-    "shipment"
+    "shipment",
+    "allocation_run"
   ],
   "states": [
     "proposed",
@@ -16,13 +19,35 @@
   ],
   "event_types": [
     "supply.registered",
+    "supply.shrunk",
+    "supply.replenished",
     "demand.submitted",
+    "demand.cancelled",
+    "contract.registered",
+    "floor.set",
+    "reservation.expired",
     "commitment.reserved",
     "commitment.confirmed",
     "shipment.dispatched"
   ],
+  "allocation_priority": [
+    "contract_lock",
+    "region_floor",
+    "channel:direct>franchise>group",
+    "submitted_at"
+  ],
+  "lot_rules": [
+    "FEFO：按到期时间升序选择批次",
+    "分配数量必须是批次最小整件量的整数倍",
+    "已过保质期的批次不参与分配"
+  ],
+  "invariants": [
+    "批次总量 = 可售量 + 锁定量 + 已履约量",
+    "锁定量 + 已履约量 不得超过批次总量",
+    "已出库数量不可被任何重算版本回收",
+    "供应缩量不得使批次总量低于该批已出库量"
+  ],
   "time_policy": "ISO 8601 with timezone",
-  "identifier_policy": "业务标识在同一类型内唯一",
-  "version_policy": "发布后的规则以新版本追加"
+  "identifier_policy": "业务标识在同一类型内唯一；event_id 全局唯一，重复导入不重复扣量",
+  "version_policy": "每次重算以新版本追加；历史版本与理由链永久保留，新版本不修改已出库事实"
 }
-

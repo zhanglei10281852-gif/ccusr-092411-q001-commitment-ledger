@@ -1,0 +1,30 @@
+[
+  {
+    "event_id": "evt-c-01",
+    "event_type": "contract.registered",
+    "aggregate_id": "ct-group-500",
+    "occurred_at": "2026-09-19T09:00:00+08:00",
+    "payload": {"customer_id": "cust-group-500", "sku": "pear", "locked_qty": 30}
+  },
+  {
+    "event_id": "evt-f-01",
+    "event_type": "floor.set",
+    "aggregate_id": "floor-north-pear",
+    "occurred_at": "2026-09-19T10:00:00+08:00",
+    "payload": {"region": "north", "sku": "pear", "min_qty": 40}
+  },
+  {
+    "event_id": "evt-s-01",
+    "event_type": "supply.registered",
+    "aggregate_id": "lot-pear-a",
+    "occurred_at": "2026-09-20T07:00:00+08:00",
+    "payload": {"sku": "pear", "quantity": 40, "case_size": 10, "expiry": "2026-09-28T20:00:00+08:00"}
+  },
+  {
+    "event_id": "evt-s-02",
+    "event_type": "supply.registered",
+    "aggregate_id": "lot-pear-b",
+    "occurred_at": "2026-09-20T08:00:00+08:00",
+    "payload": {"sku": "pear", "quantity": 30, "case_size": 10, "expiry": "2026-10-02T20:00:00+08:00"}
+  }
+]

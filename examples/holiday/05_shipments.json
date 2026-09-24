@@ -1,0 +1,16 @@
+[
+  {
+    "event_id": "evt-o-01",
+    "event_type": "shipment.dispatched",
+    "aggregate_id": "dmt-group-500",
+    "occurred_at": "2026-09-23T09:00:00+08:00",
+    "payload": {"lot_id": "lot-pear-a", "quantity": 20}
+  },
+  {
+    "event_id": "evt-o-02",
+    "event_type": "shipment.dispatched",
+    "aggregate_id": "dmt-direct-080",
+    "occurred_at": "2026-09-23T09:30:00+08:00",
+    "payload": {"lot_id": "lot-pear-a", "quantity": 20}
+  }
+]

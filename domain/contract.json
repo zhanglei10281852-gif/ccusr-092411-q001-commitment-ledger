@@ -4,7 +4,9 @@
     "supply_lot",
     "demand",
     "commitment",
-    "shipment"
+    "shipment",
+    "allocation_version",
+    "recalc_job"
   ],
   "states": [
     "proposed",
@@ -16,13 +18,27 @@
   ],
   "event_types": [
     "supply.registered",
+    "supply.quantity_changed",
     "demand.submitted",
+    "demand.cancelled",
     "commitment.reserved",
     "commitment.confirmed",
-    "shipment.dispatched"
+    "commitment.degraded",
+    "commitment.cancelled",
+    "shipment.dispatched",
+    "allocation.versioned"
   ],
   "time_policy": "ISO 8601 with timezone",
-  "identifier_policy": "业务标识在同一类型内唯一",
-  "version_policy": "发布后的规则以新版本追加"
+  "identifier_policy": "业务标识在同一类型内唯一；事件 event_id 全局唯一且导入幂等",
+  "version_policy": "发布后的规则以新版本追加；已出库事实不可倒回，重算只追加 allocation.versioned",
+  "allocation_policy": {
+    "priority": "contract > regional_floor > direct/franchisee/group_buy",
+    "normal_channel_tie_break": "needed_at 早者优先，其次 submitted_at",
+    "lot_selection": "FEFO 近保质期优先；批次保质期必须覆盖需求日（含 min_shelf_days）",
+    "case_size": "按批次最小整件量向下取整，尾量不拆整件",
+    "protected_quantity": "已确认与已出库承诺不被任何重算侵占；缩量低于已出库量直接拒绝",
+    "hold_ttl": "预占带 expires_at；到期不可确认，扫描或下一次重算释放并退出分配池"
+  },
+  "concurrency_policy": "写事务 BEGIN IMMEDIATE 串行化；承诺确认带 expected_version 乐观锁",
+  "recovery_policy": "重算作业持久化为 pending/running/done/failed；作业事件使用确定性 ID，崩溃重放不重复扣量"
 }
-
